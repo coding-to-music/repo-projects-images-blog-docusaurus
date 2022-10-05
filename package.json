@@ -68,5 +68,21 @@
       "browserslist@>=4.0.0 <4.16.5": ">=4.16.5",
       "glob-parent@<5.1.2": ">=5.1.2"
     }
-  }
+  },
+  "description": "<p align=\"center\"><a href=\"https://priambudi.fyi\"><img width=\"80px\" src=\"static/img/logo.svg\" /></a></p>",
+  "main": "babel.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priambudiLB/priambudiLB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/priambudiLB/priambudiLB/issues"
+  },
+  "homepage": "https://github.com/priambudiLB/priambudiLB#readme"
 }
