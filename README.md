@@ -38,6 +38,15 @@ git remote add origin git@github.com:coding-to-music/portfolio-images-docusaurus
 git push -u origin main
 ```
 
+## Build message after upgrading to Docusaurus 2.1.0
+
+```
+[INFO] [en] Creating an optimized production build...
+[ERROR] Unable to build website for locale en.
+[ERROR] Error: The "gtag" field in themeConfig should now be specified as option for plugin-google-gtag. For preset-classic, simply move themeConfig.gtag to preset options. More information at https://github.com/facebook/docusaurus/pull/5832.
+    at preset (/mnt/volume_nyc1_01/portfolio-images-docusaurus-blog/node_modules/@docusaurus/preset-classic/lib/index.js:27:15)
+```
+
 # Deploying Docusaurus to Cloudflare Pages
 
 https://dev.to/gaurishhs/deploying-docusaurus-to-cloudflare-pages-565g
