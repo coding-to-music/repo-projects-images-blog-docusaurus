@@ -33,8 +33,8 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Personal Website of Priambudi Lintang Bagaskara`}
-      description="Priambudi Lintang Bagaskara (Bagas) is a Software Engineer based on Indonesia, focusing as a Frontend Web Developer."
+      title={`Personal Website of your-name-here`}
+      description="Here is the Description"
     >
       <HomepageHeader />
       <main>
