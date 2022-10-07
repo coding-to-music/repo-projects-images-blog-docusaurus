@@ -5,28 +5,28 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, {useState, useMemo, useCallback, useEffect} from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 
-import Layout from '@theme/Layout';
-import ShowcaseCheckbox from '@site/src/components/showcase/ShowcaseCheckbox';
-import ShowcaseSelect from '@site/src/components/showcase/ShowcaseSelect';
-import ShowcaseCard from '@site/src/components/showcase/ShowcaseCard';
-import clsx from 'clsx';
+import Layout from "@theme/Layout";
+import ShowcaseCheckbox from "@site/src/components/showcase/ShowcaseCheckbox";
+import ShowcaseSelect from "@site/src/components/showcase/ShowcaseSelect";
+import ShowcaseCard from "@site/src/components/showcase/ShowcaseCard";
+import clsx from "clsx";
 
-import {useHistory, useLocation} from '@docusaurus/router';
+import { useHistory, useLocation } from "@docusaurus/router";
 
-import {toggleListItem} from '../../utils/jsUtils';
-import {SortedUsers, Tags, TagList, User, TagType} from '../../data/users';
+import { toggleListItem } from "../../utils/jsUtils";
+import { SortedUsers, Tags, TagList, User, TagType } from "../../data/users";
 
-type Operator = 'OR' | 'AND';
+type Operator = "OR" | "AND";
 
-const TITLE = 'My Project Showcase';
-const DESCRIPTION = 'List of applications bagas has built.';
+const TITLE = "My Project Showcase";
+const DESCRIPTION = "Search repos of projects based upon technology or keyword";
 
 function filterUsers(
   users: User[],
   selectedTags: TagType[],
-  operator: Operator,
+  operator: Operator
 ) {
   if (selectedTags.length === 0) {
     return users;
@@ -35,7 +35,7 @@ function filterUsers(
     if (user.tags.length === 0) {
       return false;
     }
-    if (operator === 'AND') {
+    if (operator === "AND") {
       return selectedTags.every((tag) => user.tags.includes(tag));
     } else {
       return selectedTags.some((tag) => user.tags.includes(tag));
@@ -46,16 +46,15 @@ function filterUsers(
 function useFilteredUsers(
   users: User[],
   selectedTags: TagType[],
-  operator: Operator,
+  operator: Operator
 ) {
-  return useMemo(() => filterUsers(users, selectedTags, operator), [
-    users,
-    selectedTags,
-    operator,
-  ]);
+  return useMemo(
+    () => filterUsers(users, selectedTags, operator),
+    [users, selectedTags, operator]
+  );
 }
 
-const TagQueryStringKey = 'tags';
+const TagQueryStringKey = "tags";
 
 function readSearchTags(search: string) {
   return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
@@ -71,7 +70,7 @@ function replaceSearchTags(search: string, newTags: TagType[]) {
 function useSelectedTags() {
   // The search query-string is the source of truth!
   const location = useLocation();
-  const {push} = useHistory();
+  const { push } = useHistory();
 
   // On SSR / first mount (hydration) no tag is selected
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
@@ -88,13 +87,13 @@ function useSelectedTags() {
       const tags = readSearchTags(location.search);
       const newTags = toggleListItem(tags, tag);
       const newSearch = replaceSearchTags(location.search, newTags);
-      push({...location, search: newSearch});
+      push({ ...location, search: newSearch });
       // no need to call setSelectedTags, useEffect will do the sync
     },
-    [location, push],
+    [location, push]
   );
 
-  return {selectedTags, toggleTag};
+  return { selectedTags, toggleTag };
 }
 
 function ShowcaseHeader() {
@@ -123,7 +122,7 @@ function ShowcaseFilters({
     <div className="margin-top--l margin-bottom--md container">
       <div className="row">
         {TagList.map((tag) => {
-          const {label, description, icon} = Tags[tag];
+          const { label, description, icon } = Tags[tag];
           return (
             <div key={tag} className="col col--2">
               <ShowcaseCheckbox
@@ -150,7 +149,8 @@ function ShowcaseFilters({
             name="operator"
             label="Filter: "
             value={operator}
-            onChange={(e) => setOperator(e.target.value as Operator)}>
+            onChange={(e) => setOperator(e.target.value as Operator)}
+          >
             <option value="OR">OR</option>
             <option value="AND">AND</option>
           </ShowcaseSelect>
@@ -160,11 +160,11 @@ function ShowcaseFilters({
   );
 }
 
-function ShowcaseCards({filteredUsers}: {filteredUsers: User[]}) {
+function ShowcaseCards({ filteredUsers }: { filteredUsers: User[] }) {
   return (
     <section className="container margin-top--lg">
       <h2>
-        {filteredUsers.length} site{filteredUsers.length > 1 ? 's' : ''}
+        {filteredUsers.length} site{filteredUsers.length > 1 ? "s" : ""}
       </h2>
       <div className="margin-top--lg">
         {filteredUsers.length > 0 ? (
@@ -177,7 +177,7 @@ function ShowcaseCards({filteredUsers}: {filteredUsers: User[]}) {
             ))}
           </div>
         ) : (
-          <div className={clsx('padding-vert--md text--center')}>
+          <div className={clsx("padding-vert--md text--center")}>
             <h3>No result</h3>
           </div>
         )}
@@ -187,8 +187,8 @@ function ShowcaseCards({filteredUsers}: {filteredUsers: User[]}) {
 }
 
 function Showcase() {
-  const {selectedTags, toggleTag} = useSelectedTags();
-  const [operator, setOperator] = useState<Operator>('OR');
+  const { selectedTags, toggleTag } = useSelectedTags();
+  const [operator, setOperator] = useState<Operator>("OR");
   const filteredUsers = useFilteredUsers(SortedUsers, selectedTags, operator);
   return (
     <Layout title={TITLE} description={DESCRIPTION}>
