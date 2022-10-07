@@ -1,14 +1,16 @@
-# portfolio-images-docusaurus-blog
+# repo-projects-images-blog-docusaurus
 
-# 🚀 Classic docs and blog site built using Docusaurus 2 🚀
+# 🚀 Search repos with a classic docs and blog site built using Docusaurus 2 🚀
 
-https://portfolio-images-docusaurus-blog.pages.dev
+https://repo-projects-images-blog-docusaurus.pages.dev
 
-https://github.com/coding-to-music/portfolio-images-docusaurus-blog
+https://github.com/coding-to-music/repo-projects-images-blog-docusaurus
 
-https://portfolio-images-docusaurus-blog.vercel.app
+https://repo-projects-images-blog-docusaurus.vercel.app
 
 From / By https://github.com/priambudiLB/priambudiLB
+
+https://fyi-seven.vercel.app
 
 <p align="center"><a href="https://priambudi.fyi"><img width="80px" src="static/img/logo.svg" /></a></p>
 
@@ -34,7 +36,7 @@ git add .
 git remote remove origin
 git commit -m "first commit"
 git branch -M main
-git remote add origin git@github.com:coding-to-music/portfolio-images-docusaurus-blog.git
+git remote add origin git@github.com:coding-to-music/repo-projects-images-blog-docusaurus.git
 git push -u origin main
 ```
 
@@ -44,7 +46,7 @@ git push -u origin main
 [INFO] [en] Creating an optimized production build...
 [ERROR] Unable to build website for locale en.
 [ERROR] Error: The "gtag" field in themeConfig should now be specified as option for plugin-google-gtag. For preset-classic, simply move themeConfig.gtag to preset options. More information at https://github.com/facebook/docusaurus/pull/5832.
-    at preset (/mnt/volume_nyc1_01/portfolio-images-docusaurus-blog/node_modules/@docusaurus/preset-classic/lib/index.js:27:15)
+    at preset (/mnt/volume_nyc1_01/repo-projects-images-blog-docusaurus/node_modules/@docusaurus/preset-classic/lib/index.js:27:15)
 ```
 
 # Deploying Docusaurus to Cloudflare Pages
