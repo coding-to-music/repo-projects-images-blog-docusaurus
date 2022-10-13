@@ -25,7 +25,7 @@ https://fyi-seven.vercel.app
 ## Environment variables:
 
 ```java
-
+.
 ```
 
 ## GitHub
